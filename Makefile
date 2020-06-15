@@ -1,6 +1,6 @@
 CC=gcc
 FLAGS=-O2 -c -Wall
-LDFLAGS=-lSDL2
+LDFLAGS=-lSDL2 -lSDL2_image -lz -lpng16
 DEBUG=-g
 SOURCEDIR=src
 BUILDDIR=build
