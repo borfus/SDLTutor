@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "game.h"
+#include "texture_manager.h"
 
 int count = 0;
 int running = 0;
@@ -29,12 +30,10 @@ void init(char *title, int xpos, int ypos, int width, int height, int fullscreen
             printf("Renderer created.\n");
         }
 
-        SDL_Surface *surface = IMG_Load("assets/character.png");
-        player_texture = SDL_CreateTextureFromSurface(renderer, surface);
-        SDL_FreeSurface(surface);
-
         running = 1;
     }
+
+    player_texture = load_texture("assets/character.png", renderer);
 }
 
 void handle_events() {

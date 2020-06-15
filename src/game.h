@@ -1,5 +1,4 @@
-#ifndef game_h
-#define game_h
+#pragma once
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -10,5 +9,3 @@ void update();
 void render();
 void clean();
 int is_running();
-
-#endif /* game_h */
