@@ -1,7 +1,7 @@
 CC=gcc
 FLAGS=-O2 -c -Wall
 LDFLAGS=-lSDL2 -lSDL2_image -lz -lpng16
-DEBUG=-g
+DEBUG=
 SOURCEDIR=src
 BUILDDIR=build
 EXECUTABLE=SDLTutor
@@ -15,7 +15,7 @@ builddir:
 	mkdir -p $(BUILDDIR)
 
 $(BUILDDIR)/$(EXECUTABLE): $(OBJECTS)
-	$(CC) $^ -o $@ $(LDFLAGS)
+	$(CC) $^$(DEBUG) -o $@ $(LDFLAGS)
 
 $(OBJECTS): 
 $(BUILDDIR)/%.o: $(SOURCEDIR)/%.c
@@ -27,4 +27,4 @@ clean:
 dev: debug all
 
 debug:
-	$(eval FLAGS += $(DEBUG))
+	$(eval DEBUG += -g)

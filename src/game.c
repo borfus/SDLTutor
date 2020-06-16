@@ -1,14 +1,15 @@
 #include <stdio.h>
+#include <string.h>
 #include "game.h"
+#include "game_object.h"
 #include "texture_manager.h"
+#include "player.h"
 
 int count = 0;
 int running = 0;
+
 SDL_Window *window;
 SDL_Renderer *renderer;
-
-SDL_Texture *player_texture;
-SDL_Rect src_rect, dst_rect;
 
 void init(char *title, int xpos, int ypos, int width, int height, int fullscreen) {
     int flags = 0;
@@ -33,7 +34,8 @@ void init(char *title, int xpos, int ypos, int width, int height, int fullscreen
         running = 1;
     }
 
-    player_texture = load_texture("assets/character.png", renderer);
+    init_player(renderer);
+    printf("Player created.\n");
 }
 
 void handle_events() {
@@ -52,9 +54,7 @@ void handle_events() {
 void update() {
     count++;
 
-    dst_rect.h = 128;
-    dst_rect.w = 128;
-    dst_rect.x = count;
+    update_player(&player);
 
     printf("%d\n", count);
 }
@@ -63,7 +63,7 @@ void render() {
     SDL_RenderClear(renderer);
 
     //render stuff - painter's method
-    SDL_RenderCopy(renderer, player_texture, NULL, &dst_rect);
+    SDL_RenderCopy(renderer, player.texture, &player.src_rect, &player.dst_rect);
 
     SDL_RenderPresent(renderer);
 }
