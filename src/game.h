@@ -9,3 +9,5 @@ void update();
 void render();
 void clean();
 int is_running();
+
+SDL_Renderer *renderer;

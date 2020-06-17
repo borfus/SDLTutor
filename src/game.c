@@ -4,6 +4,7 @@
 #include "game_object.h"
 #include "texture_manager.h"
 #include "player.h"
+#include "map.h"
 
 int count = 0;
 int running = 0;
@@ -34,7 +35,8 @@ void init(char *title, int xpos, int ypos, int width, int height, int fullscreen
         running = 1;
     }
 
-    init_player(renderer);
+    init_map();
+    init_player();
     printf("Player created.\n");
 }
 
@@ -63,6 +65,7 @@ void render() {
     SDL_RenderClear(renderer);
 
     //render stuff - painter's method
+    draw_map();
     SDL_RenderCopy(renderer, player.texture, &player.src_rect, &player.dst_rect);
 
     SDL_RenderPresent(renderer);

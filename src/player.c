@@ -1,9 +1,9 @@
 #include "player.h"
 #include "game.h"
 
-void init_player(SDL_Renderer *renderer) {
+void init_player() {
     strcpy(player.texture_sheet, "assets/character.png");
-    player.texture = load_texture(player.texture_sheet, renderer);
+    player.texture = load_texture(player.texture_sheet);
     player.xpos = 0;
     player.ypos = 0;
     player.x_trajectory = 1;
